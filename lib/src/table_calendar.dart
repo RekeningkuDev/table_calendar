@@ -3,6 +3,7 @@
 
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
@@ -64,6 +65,9 @@ class TableCalendar<T> extends StatefulWidget {
   /// List of days treated as weekend days.
   /// Use built-in `DateTime` weekday constants (e.g. `DateTime.monday`) instead of `int` literals (e.g. `1`).
   final List<int> weekendDays;
+
+  /// Widget placed between `TableCalendar`'s header and the content.
+  final Widget? betweenHeaderAndTable;
 
   /// Specifies `TableCalendar`'s current format.
   final CalendarFormat calendarFormat;
@@ -214,6 +218,7 @@ class TableCalendar<T> extends StatefulWidget {
     this.locale,
     this.rangeStartDay,
     this.rangeEndDay,
+    this.betweenHeaderAndTable,
     this.weekendDays = const [DateTime.saturday, DateTime.sunday],
     this.calendarFormat = CalendarFormat.month,
     this.availableCalendarFormats = const {
@@ -476,6 +481,7 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
               );
             },
           ),
+        if (widget.betweenHeaderAndTable != null) widget.betweenHeaderAndTable!,
         Flexible(
           flex: widget.shouldFillViewport ? 1 : 0,
           child: TableCalendarBase(
