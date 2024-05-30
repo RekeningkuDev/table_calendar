@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 class CustomIconButton extends StatelessWidget {
   final Widget icon;
-  final VoidCallback onTap;
+  final void Function()? onTap;
   final EdgeInsets margin;
   final EdgeInsets padding;
 

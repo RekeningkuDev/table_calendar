@@ -12,10 +12,12 @@ import 'format_button.dart';
 class CalendarHeader extends StatelessWidget {
   final dynamic locale;
   final DateTime focusedMonth;
+  final bool disableChevronLeft;
+  final bool disableChevronRight;
   final CalendarFormat calendarFormat;
   final HeaderStyle headerStyle;
-  final VoidCallback onLeftChevronTap;
-  final VoidCallback onRightChevronTap;
+  final void Function()? onLeftChevronTap;
+  final void Function()? onRightChevronTap;
   final VoidCallback onHeaderTap;
   final VoidCallback onHeaderLongPress;
   final ValueChanged<CalendarFormat> onFormatButtonTap;
@@ -26,6 +28,8 @@ class CalendarHeader extends StatelessWidget {
     Key? key,
     this.locale,
     required this.focusedMonth,
+    required this.disableChevronLeft,
+    required this.disableChevronRight,
     required this.calendarFormat,
     required this.headerStyle,
     required this.onLeftChevronTap,
@@ -52,7 +56,7 @@ class CalendarHeader extends StatelessWidget {
           if (headerStyle.leftChevronVisible)
             CustomIconButton(
               icon: headerStyle.leftChevronIcon,
-              onTap: onLeftChevronTap,
+              onTap: disableChevronLeft ? null : onLeftChevronTap,
               margin: headerStyle.leftChevronMargin,
               padding: headerStyle.leftChevronPadding,
             ),
@@ -87,7 +91,7 @@ class CalendarHeader extends StatelessWidget {
           if (headerStyle.rightChevronVisible)
             CustomIconButton(
               icon: headerStyle.rightChevronIcon,
-              onTap: onRightChevronTap,
+              onTap: disableChevronRight ? null : onRightChevronTap,
               margin: headerStyle.rightChevronMargin,
               padding: headerStyle.rightChevronPadding,
             ),
