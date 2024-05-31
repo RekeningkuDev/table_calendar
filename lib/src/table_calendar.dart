@@ -752,9 +752,14 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
   }
 
   bool _isDayAvailable(DateTime day) {
-    return widget.enabledDayPredicate == null
-        ? true
-        : widget.enabledDayPredicate!(day);
+    if (widget.holidayPredicate != null &&
+        widget.calendarStyle.isHolidayDisabled) {
+      return !widget.holidayPredicate!(day);
+    } else {
+      return widget.enabledDayPredicate == null
+          ? true
+          : widget.enabledDayPredicate!(day);
+    }
   }
 
   DateTime _firstDayOfMonth(DateTime month) {

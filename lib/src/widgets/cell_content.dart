@@ -74,7 +74,10 @@ class CellContent extends StatelessWidget {
             padding: padding,
             decoration: calendarStyle.disabledDecoration,
             alignment: alignment,
-            child: Text(text, style: calendarStyle.disabledTextStyle),
+            child: Text(text,
+                style: calendarStyle.isHolidayDisabled && isHoliday
+                    ? calendarStyle.holidayTextStyle
+                    : calendarStyle.disabledTextStyle),
           );
     } else if (isSelected) {
       cell = calendarBuilders.selectedBuilder?.call(context, day, focusedDay) ??

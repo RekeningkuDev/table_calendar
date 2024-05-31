@@ -115,6 +115,9 @@ class CalendarStyle {
   /// as well as dates that are outside of the bounds set up by `firstDay` and `lastDay`.
   final TextStyle disabledTextStyle;
 
+  /// Determines if day cells that are marked as holidays by `holidayPredicate` should be disabled.
+  final bool isHolidayDisabled;
+
   /// Decoration for day cells that have been disabled.
   ///
   /// This refers to dates disabled by returning false in `enabledDayPredicate`,
@@ -157,6 +160,7 @@ class CalendarStyle {
     this.canMarkersOverflow = true,
     this.outsideDaysVisible = true,
     this.markersAutoAligned = true,
+    this.isHolidayDisabled = false,
     this.markerSize,
     this.markerSizeScale = 0.2,
     this.markersAnchor = 0.7,
