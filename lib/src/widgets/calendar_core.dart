@@ -137,8 +137,6 @@ class CalendarCore extends StatelessWidget {
         return _getTwoWeekCount(first, last) + 1;
       case CalendarFormat.week:
         return _getWeekCount(first, last) + 1;
-      default:
-        return _getMonthCount(first, last) + 1;
     }
   }
 
@@ -223,8 +221,6 @@ class CalendarCore extends StatelessWidget {
         return _daysInTwoWeeks(focusedDay);
       case CalendarFormat.week:
         return _daysInWeek(focusedDay);
-      default:
-        return _daysInMonth(focusedDay);
     }
   }
 
