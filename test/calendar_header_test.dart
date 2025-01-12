@@ -27,6 +27,8 @@ Widget setupTestWidget({
     textDirection: TextDirection.ltr,
     child: Material(
       child: CalendarHeader(
+        disableChevronLeft: true,
+        disableChevronRight: true,
         focusedMonth: focusedMonth,
         calendarFormat: CalendarFormat.month,
         headerStyle: headerStyle,
